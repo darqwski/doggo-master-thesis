@@ -7,3 +7,21 @@ body, #react-app, html {
     display: flex;
     align-items: center;
 }
+
+.meme-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.meme-container > img {
+    max-width: 80%;
+    margin: auto;
+}
+.meme-container > p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: center;
+}

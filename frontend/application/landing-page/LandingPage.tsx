@@ -2,14 +2,10 @@ import React from 'react';
 import BasicPage from "../../components/basic-page/BasicPage";
 import { Card } from "react-materialize";
 
-const getImgLink = (imgSrc: string) => {
-    return `${window.location.href}${imgSrc}`
-}
-
 const LandingPage: React.FC = () => {
     return <BasicPage>
         <Card>
-            <p className="flex"><h2> Aplikacja dla hodowców i właścicieli psów</h2><img style={{maxHeight: '12rem'}} src={getImgLink("img/doggo-smile-1.png")} /> </p>
+            <p className="flex"><h2> Aplikacja dla hodowców i właścicieli psów</h2></p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce metus orci, accumsan a placerat non, sollicitudin ut purus.
                 Duis pharetra vitae velit nec porttitor. Nam eros ante, faucibus ut justo consectetur, porttitor tristique turpis.
@@ -19,6 +15,10 @@ const LandingPage: React.FC = () => {
                 Proin interdum turpis eu risus ultricies cursus. Integer sollicitudin, massa convallis volutpat scelerisque,
                 tortor mi tincidunt enim, et dapibus quam nibh sit amet magna. Vivamus sit amet tempus turpis. In hac habitasse platea dictumst.
             </p>
+            <div className="meme-container">
+                <img src={"img/doggo-smile-1.png"} />
+                <p> Soju - Główny bohater tej aplikacji</p>
+            </div>
             <h2> Wszystko w jednym miejscu</h2>
             <p>
                 Maecenas congue elit a enim pellentesque, tempor tincidunt lacus porttitor. Nullam purus odio, consequat vel sapien vestibulum, aliquet ultrices ligula.
