@@ -1,26 +1,26 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, } from 'react-router-dom';
-import './css/materialize.css';
-import LandingPage from "./application/LandingPage";
+import React from "react";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import "./css/materialize.css";
+import "./css/global.css";
+import LandingPage from "./application/landing-page/LandingPage";
 
-const routing = [
-	{ path: '/', component: LandingPage },
-];
+const routing = [{ path: "/", component: LandingPage }];
 
 const App = () => {
-	return (
-		<div>
-			<Router forceRefresh>
-				{routing.map(({ path, component }, index)=> (
-					<Route exact path={path} component={component} key={`routing-${index}`} />
-				))}
-			</Router>
-		</div>
-	);
+  return (
+    <Router forceRefresh>
+      {routing.map(({ path, component }, index) => (
+        <Route
+          exact
+          path={path}
+          component={component}
+          key={`routing-${index}`}
+        />
+      ))}
+    </Router>
+  );
 };
 
-const AppWithContext = ()=>(
-	<App />
-);
+const AppWithContext = () => <App />;
 
 export default AppWithContext;

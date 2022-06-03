@@ -1,0 +1,44 @@
+@primaryDark: #3e2723;
+
+.basic-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  &__nav {
+    background-color: @primaryDark;
+    justify-content: space-between;
+    display: flex;
+    &-user-info {
+      display: flex;
+      > * {
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  &__footer {
+    min-height: 10rem;
+    width: 100%;
+    background-color: #212121;
+    color: #FFFFFF;
+    display: flex;
+    &-column {
+      color: white;
+      text-align: center;
+      flex-grow: 1;
+      &-title {
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      &-link {
+        color: white;
+      }
+    }
+  }
+  &__content {
+    flex-grow: 1;
+  }
+}
