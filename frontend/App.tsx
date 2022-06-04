@@ -8,11 +8,13 @@ import ApplicationContextManager from './context/application-context/Application
 import LoginPage from './application/login-page/LoginPage'
 import SnackbarManager from './components/snackbar/SnackbarContextManager'
 import RegisterPage from "./application/register-page/RegisterPage";
+import DashboardPage from "./application/dashboard-page/DashboardPage";
 
 const routing = [
     { path: '/', component: LandingPage },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
+    { path: '/dashboard', component: DashboardPage },
 ]
 
 const App = () => {

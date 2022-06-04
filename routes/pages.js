@@ -7,5 +7,9 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', provideFrontendData(req));
 });
+/* GET home page. */
+router.get('/dashboard', function(req, res, next) {
+  res.render('index', provideFrontendData(req));
+});
 
 module.exports = router;

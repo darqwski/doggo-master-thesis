@@ -20,8 +20,8 @@ router.post('/login', (req, res) => {
                 res.cookie('user', login, { signed: true });
                 res.cookie('userId', result[0].userId, { signed: true });
                 res.cookie('login',login);
-                res.cookie('permissionSecret',result[0].permission, { signed: true });
-                res.cookie('permission',result[0].permission);
+                res.cookie('permissionSecret',result[0].type, { signed: true });
+                res.cookie('permission',result[0].type);
                 res.redirect('/dashboard')
             } else {
                 res.render('index', provideFrontendData(req,{ loginFailed: "Niepoprawny użytkownik lub hasło" }));
