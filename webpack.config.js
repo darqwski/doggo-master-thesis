@@ -15,7 +15,7 @@ module.exports = {
     },
     entry: path.resolve(__dirname, 'frontend', 'index.js'),
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, 'public/scripts'),
         filename: 'bundle.js'
     },
     module: {
@@ -46,7 +46,7 @@ module.exports = {
             },
         ]
     },
-    plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'views', 'index.html') })],
+    plugins: [],
     optimization: {
         runtimeChunk: {
             name: 'runtime'

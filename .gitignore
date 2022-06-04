@@ -1,6 +1,5 @@
 /.idea/
 /doggo.iml
 /node_modules/
-/public/bundle.js
-/public/index.html
-/public/main.bundle.js
+/public/scripts/bundle.js
+/public/scripts/main.bundle.js
