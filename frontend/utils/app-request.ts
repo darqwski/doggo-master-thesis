@@ -3,10 +3,12 @@ const appRequest = <T>({
    data = undefined,
    method = 'GET',
    headers = {},
+   jsonResponse = true,
    ...rest
 }: {
     url: string,
     data?: unknown,
+    jsonResponse?: boolean,
     method?: 'POST' | 'GET' | 'PUT' | 'DELETE',
     headers?: {
         [key: string]: string
@@ -19,6 +21,6 @@ const appRequest = <T>({
         'Content-Type': 'application/json',
         ...(headers || {}),
     }
-}).then( response => response.json().then(data => ({ data, status: response.status })));
+}).then( response => (jsonResponse ? response.json() : response.text()).then(data => ({ data, status: response.status })));
 
 export default appRequest;

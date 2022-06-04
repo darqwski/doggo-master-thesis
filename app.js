@@ -5,9 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 var bodyParser = require('body-parser')
 
-var pagesRouter = require('./routes/pages');
-var authorizationRouter = require('./routes/authorization');
-var registrationRouter = require('./routes/registration');
+const pagesRouter = require('./routes/pages');
+const authorizationRouter = require('./routes/authorization');
+const registrationRouter = require('./routes/registration');
+const createOfferRouter = require('./routes/dogs/create-offer');
+const getUserDogs = require('./routes/dogs/get-user-dogs');
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public/img')));
 app.use('/', pagesRouter);
 app.use('/', authorizationRouter);
 app.use('/', registrationRouter);
+app.use('/', createOfferRouter);
+app.use('/API', getUserDogs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

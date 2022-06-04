@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const md5 = require('md5');
 const { provideFrontendData } = require("../utils/provide-frontend-data");
 const { getConnection } = require("../utils/database-utils");
 

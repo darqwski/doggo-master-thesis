@@ -6,6 +6,7 @@ export interface IUseAppRequestProps {
     method?: 'POST' | 'GET' | 'PUT' | 'DELETE',
     data?: unknown,
     name?: string,
+    jsonResponse?: boolean;
     deps?: unknown[]
 }
 
@@ -13,10 +14,10 @@ export interface IUseAppRequestResponse<T = unknown> {
     refresh(): void;
     loading: boolean;
     responseCode: number;
-    data: T
+    data: T | undefined
 }
 
-const useAppRequest = <T = unknown>({ name = 'data', url, method, data, deps = [] }: IUseAppRequestProps): IUseAppRequestResponse => {
+const useAppRequest = <T = unknown>({ name = 'data', url, method, data, deps = [], jsonResponse = true }: IUseAppRequestProps): IUseAppRequestResponse<T> => {
     const [responseData, setResponseData] = useState<T>();
     const [loading, setLoading] = useState(true);
     const [isRefresh, setRefresh] = useState(false);
@@ -24,7 +25,7 @@ const useAppRequest = <T = unknown>({ name = 'data', url, method, data, deps = [
 
     useEffect(()=>{
         setLoading(true);
-        appRequest<T>({ url, method, data }).then(({ data, status })=>{
+        appRequest<T>({ url, method, data, jsonResponse }).then(({ data, status })=>{
             setResponseData(data);
             setResponseCode(status);
             setLoading(false);

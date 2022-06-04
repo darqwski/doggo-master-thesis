@@ -9,12 +9,14 @@ import LoginPage from './application/login-page/LoginPage'
 import SnackbarManager from './components/snackbar/SnackbarContextManager'
 import RegisterPage from "./application/register-page/RegisterPage";
 import DashboardPage from "./application/dashboard-page/DashboardPage";
+import CreateOfferPage from "./application/create-offer/CreateOfferPage";
 
 const routing = [
     { path: '/', component: LandingPage },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
     { path: '/dashboard', component: DashboardPage },
+    { path: '/dogs/create-offer', component: CreateOfferPage },
 ]
 
 const App = () => {

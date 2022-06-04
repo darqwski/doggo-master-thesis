@@ -1,7 +1,13 @@
+import {IReservation} from "./reservation";
+
 export interface IDog {
+    dogId: string;
     race: string;
-    name?: string;
+    dogName?: string;
     owner: number;
     birth: string;
     profileImage: string
+}
+
+export interface IDogWithReservation extends IDog, IReservation {
 }
