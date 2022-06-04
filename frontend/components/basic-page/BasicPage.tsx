@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import './basic-page.less'
 import { Icon, SideNav } from 'react-materialize'
 import BasicNavUserInfo from './BasicNavUserInfo'
+import BasicSideNav from "./BasicSideNav";
 
 export interface IBasicPage {
     children: JSX.Element
@@ -11,9 +12,7 @@ const BasicPage: FC<IBasicPage> = ({ children }) => {
     return (
         <div className="basic-page">
             <nav className="basic-page__nav">
-                <SideNav trigger={<Icon>menu</Icon>}>
-                    <span> Some menu </span>
-                </SideNav>
+                <BasicSideNav />
                 <div>Doggo</div>
 
                 <BasicNavUserInfo />

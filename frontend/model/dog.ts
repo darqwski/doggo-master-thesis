@@ -1,7 +1,7 @@
 export interface IDog {
     race: string;
     name?: string;
-    owner?: string;
-    birth?: string;
+    owner: number;
+    birth: string;
     profileImage: string
 }

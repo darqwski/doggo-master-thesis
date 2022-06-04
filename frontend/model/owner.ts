@@ -1,3 +1,4 @@
-export interface IOwner {
-    name: string
+import {IUser} from "./user";
+
+export interface IOwner extends IUser {
 }

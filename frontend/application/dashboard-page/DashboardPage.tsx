@@ -1,11 +1,12 @@
 import React from 'react'
 import BasicPage from '../../components/basic-page/BasicPage'
 import FeedList from "./components/feed-list/FeedList";
+import {IFeedEvent} from "../../model/feed";
 
-const feedList = [
+const feedList: IFeedEvent[] = [
 	{
 		type: 'dog-image-post',
-		owner: { name: 'Typowy własciciel' },
+		owner: { firstName: 'Typowy własciciel', login: '', lastName: '', type: 'owner' },
 		dog: {
 			name: 'Soju',
 			img: '',
@@ -22,12 +23,12 @@ const feedList = [
             img: '',
             birth: '3 tygodnie temu',
         },
-        breeder: { name: 'Podejrzany hodowca' },
+        breeder: { firstName: 'Podejrzany hodowca' },
 		breeding: {name: 'Hodowla pomeranianów', place: 'Kraków' },
 	},
 	{
 		type: 'new-reservation',
-		breeder: { name: 'Podejrzany hodowca' },
+		breeder: { firstName: 'Podejrzany hodowca' },
 		breeding: {name: 'Hodowla pomeranianów', place: 'Kraków' },
 		dog: {
 			race: 'Pomeranian',
@@ -37,18 +38,18 @@ const feedList = [
 	},
     {
         type: 'new-breed',
-        breeder: { name: 'Podejrzany hodowca', place: 'Kraków' },
+        breeder: { firstName: 'Podejrzany hodowca', place: 'Kraków' },
 		breeding: {name: 'Hodowla pomeranianów', place: 'Kraków' },
 	},
 	{
 		type: 'dog-registered',
-		owner: { name: 'Typowy własciciel' },
+		owner: { firstName: 'Typowy własciciel' },
 		dog: {
 			name: 'Soju',
 			img: '',
 		},
 	},
-]
+] as IFeedEvent[]
 
 const DashboardPage: React.FC = () => {
     return (

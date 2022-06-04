@@ -18,7 +18,7 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
 			return <div style={{ display: 'flex' }}>
 				<img style={{ maxWidth: '100%', maxHeight: '10rem'}} src={dog?.profileImage || '/img/doggo-calm-1.jpeg'} />
 				<div style={{ padding: '1rem'}}>
-					<p>Hodowca <strong>{breeder?.name}</strong> wystawia psa rasy {dog?.race} w hodowli {breeding?.name} w {breeding?.place}.</p>
+					<p>Hodowca <strong>{breeder?.firstName}</strong> wystawia psa rasy {dog?.race} w hodowli {breeding?.name} w {breeding?.place}.</p>
 					<p>Pies ma {calculateAge(dog?.birth)}</p>
 				</div>
 			</div>
@@ -35,7 +35,7 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
 			return <div style={{ display: 'flex' }}>
 				<img style={{ maxWidth: '100%', maxHeight: '10rem'}} src={img?.src || '/img/doggo-calm-1.jpeg'} />
 				<div style={{ padding: '1rem'}}>
-					<p><strong>{owner?.name}</strong> wstawił nowe zdjęcia swojego psa <strong>{dog?.name}</strong> .</p>
+					<p><strong>{owner?.firstName}</strong> wstawił nowe zdjęcia swojego psa <strong>{dog?.name}</strong> .</p>
 				</div>
 			</div>
 		}
@@ -43,7 +43,7 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
 			return <div style={{ display: 'flex' }}>
 				<img style={{ maxWidth: '100%', maxHeight: '10rem'}} src={img?.src || '/img/doggo-calm-1.jpeg'} />
 				<div style={{ padding: '1rem'}}>
-					<p>Hodowca <strong>{breeder?.name}</strong> rejestruje nowego psa rasy {dog?.race} w hodowli {breeding?.name} w {breeding?.place}.</p>
+					<p>Hodowca <strong>{breeder?.firstName}</strong> rejestruje nowego psa rasy {dog?.race} w hodowli {breeding?.name} w {breeding?.place}.</p>
 				</div>
 			</div>
 		}
@@ -51,7 +51,7 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
 			return <div style={{ display: 'flex' }}>
 				<img style={{ maxWidth: '100%', maxHeight: '10rem'}} src={img?.src || '/img/doggo-calm-1.jpeg'} />
 				<div style={{ padding: '1rem'}}>
-					<p><strong>{owner?.name}</strong> dodaje nowego psa, który wabi się <strong>{dog?.name}</strong>.</p>
+					<p><strong>{owner?.firstName}</strong> dodaje nowego psa, który wabi się <strong>{dog?.name}</strong>.</p>
 					<p> Pies ma <strong>{calculateAge(dog?.birth)}</strong> i jest rasy <strong>{dog?.race}</strong>.</p>
 				</div>
 			</div>

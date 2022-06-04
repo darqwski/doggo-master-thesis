@@ -7,6 +7,7 @@ const ApplicationContextManager: React.FC<{children: JSX.Element}> = ({ children
     return <ApplicationContext.Provider value={{
     	isLogged: !!json.login,
 		login: json.login,
+		type: json.type,
 		loginFailed: json.loginFailed
 	}}>{children}</ApplicationContext.Provider>;
 };

@@ -20,8 +20,8 @@ router.post('/login', (req, res) => {
                 res.cookie('user', login, { signed: true });
                 res.cookie('userId', result[0].userId, { signed: true });
                 res.cookie('login',login);
-                res.cookie('permissionSecret',result[0].type, { signed: true });
-                res.cookie('permission',result[0].type);
+                res.cookie('permission',result[0].type, { signed: true });
+                res.cookie('type',result[0].type);
                 res.redirect('/dashboard')
             } else {
                 res.render('index', provideFrontendData(req,{ loginFailed: "Niepoprawny użytkownik lub hasło" }));
@@ -35,8 +35,10 @@ router.get('/login', (req, res) => {
 })
 router.get('/logout', (req, res) => {
     res.cookie('user', '', { maxAge: -1 });
+    res.cookie('userId', '', { maxAge: -1 });
     res.cookie('login', '', { maxAge: -1 });
     res.cookie('permission', '', { maxAge: -1 });
+    res.cookie('type', '', { maxAge: -1 });
 
     res.redirect('/');
 })
