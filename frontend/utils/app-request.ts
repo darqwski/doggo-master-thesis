@@ -16,6 +16,7 @@ const appRequest = <T>({
     body: (data && JSON.stringify(data)) as string,
     method: method,
     headers: {
+        'Content-Type': 'application/json',
         ...(headers || {}),
     }
 }).then( response => response.json().then(data => ({ data, status: response.status })));

@@ -3,7 +3,9 @@ import './basic-page.less'
 import { Icon, SideNav } from 'react-materialize'
 import BasicNavUserInfo from './BasicNavUserInfo'
 
-export interface IBasicPage {}
+export interface IBasicPage {
+    children: JSX.Element
+}
 
 const BasicPage: FC<IBasicPage> = ({ children }) => {
     return (
