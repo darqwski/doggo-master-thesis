@@ -2,9 +2,12 @@ import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./css/materialize.css";
 import "./css/global.css";
+import "./css/variables.less";
 import LandingPage from "./application/landing-page/LandingPage";
+import ApplicationContextManager from "./context/application-context/ApplicationContextManager";
+import LoginPage from "./application/login-page/LoginPage";
 
-const routing = [{ path: "/", component: LandingPage }];
+const routing = [{ path: "/", component: LandingPage },{ path: "/login", component: LoginPage },];
 
 const App = () => {
   return (
@@ -21,6 +24,6 @@ const App = () => {
   );
 };
 
-const AppWithContext = () => <App />;
+const AppWithContext = () => <ApplicationContextManager><App /></ApplicationContextManager>;
 
 export default AppWithContext;

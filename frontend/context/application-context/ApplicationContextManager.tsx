@@ -1,16 +1,13 @@
 import React from 'react';
 import {ApplicationContext} from "./application-context";
 
-export interface IApplicationContextManager {
-
-}
-
-const ApplicationContextManager: React.FC = ({ children }) => {
+const ApplicationContextManager: React.FC<{children: JSX.Element}> = ({ children }) => {
 	const applicationData = document.querySelector("#react-data");
 	const json = JSON.parse(applicationData?.innerHTML || '')
     return <ApplicationContext.Provider value={{
-    	isLogged: json.isLogged,
-		login: json.login
+    	isLogged: !!json.login,
+		login: json.login,
+		loginFailed: json.loginFailed
 	}}>{children}</ApplicationContext.Provider>;
 };
 

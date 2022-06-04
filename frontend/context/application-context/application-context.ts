@@ -2,5 +2,6 @@ import React from "react";
 
 export const ApplicationContext = React.createContext({
     login: '',
-    isLogged: false
+    isLogged: false,
+    loginFailed: ''
 })
