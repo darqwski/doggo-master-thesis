@@ -25,7 +25,7 @@ const LoginPage = () => {
 					{loginFailed && <div className="error-text red-text">{loginFailed}!</div>}
 				</div>
 				<div className="card-action">
-					<button className="btn-large green" type="submit">Zaloguj</button>
+					<button className="btn-large brown darken-4" type="submit">Zaloguj</button>
 				</div>
 			</div>
 		</form>
