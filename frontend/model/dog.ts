@@ -11,3 +11,6 @@ export interface IDog {
 
 export interface IDogWithReservation extends IDog, IReservation {
 }
+export interface IDogWithReservationAndOwner extends IDog, IReservation {
+    ownerLogin: string
+}

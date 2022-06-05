@@ -10,6 +10,8 @@ const authorizationRouter = require('./routes/authorization');
 const registrationRouter = require('./routes/registration');
 const createOfferRouter = require('./routes/dogs/create-offer');
 const getUserDogs = require('./routes/dogs/get-user-dogs');
+const dogsForSale = require('./routes/dogs/dogs-for-sale');
+const getActiveReservations = require('./routes/dogs/get-active-reservation');
 
 const app = express();
 
@@ -30,7 +32,9 @@ app.use('/', pagesRouter);
 app.use('/', authorizationRouter);
 app.use('/', registrationRouter);
 app.use('/', createOfferRouter);
-app.use('/API', getUserDogs);
+app.use('/', createOfferRouter);
+app.use('/', dogsForSale);
+app.use('/', getActiveReservations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
