@@ -17,7 +17,7 @@ const ActiveReservationsPage: React.FC = () => {
     return (
         <BasicPage>
             <div>
-				<h3 style={{textAlign: 'center'}}>Aktywne oferty sprzedaży</h3>
+				<h3 style={{textAlign: 'center'}}>Tablica ogłoszeń</h3>
 				{data?.map((dogWithReservationAndOwner) => (
 					<ReservationCard
 						dogWithReservationAndOwner={dogWithReservationAndOwner}

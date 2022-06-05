@@ -10,7 +10,7 @@ export interface IUseAppRequestProps {
     deps?: unknown[]
 }
 
-export interface IUseAppRequestResponse<T = unknown> {
+export interface IUseAppRequestResponse<T = unknown, name = string> {
     refresh(): void;
     loading: boolean;
     responseCode: number;

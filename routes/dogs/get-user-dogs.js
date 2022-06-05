@@ -3,7 +3,7 @@ const {authorizeUser} = require("../../utils/authorization-utils");
 const {executeQuery} = require("../../utils/database-utils");
 const router = express.Router()
 
-router.post('/get-user-dogs',authorizeUser,  async (req, res, next) => {
+router.get('/API/get-user-dogs',authorizeUser,  async (req, res, next) => {
     const { userId } = req.signedCookies
 
     const dogs = await executeQuery(`

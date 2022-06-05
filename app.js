@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 const pagesRouter = require('./routes/pages');
 const authorizationRouter = require('./routes/authorization');
 const registrationRouter = require('./routes/registration');
-const createOfferRouter = require('./routes/dogs/create-offer');
+const createOfferRouter = require('./routes/offer/create-offer');
 const getUserDogs = require('./routes/dogs/get-user-dogs');
 const dogsForSale = require('./routes/dogs/dogs-for-sale');
 const getActiveReservations = require('./routes/dogs/get-active-reservation');
@@ -32,8 +32,8 @@ app.use('/', pagesRouter);
 app.use('/', authorizationRouter);
 app.use('/', registrationRouter);
 app.use('/', createOfferRouter);
-app.use('/', createOfferRouter);
 app.use('/', dogsForSale);
+app.use('/', getUserDogs);
 app.use('/', getActiveReservations);
 
 // catch 404 and forward to error handler

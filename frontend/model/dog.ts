@@ -1,7 +1,7 @@
 import {IReservation} from "./reservation";
 
 export interface IDog {
-    dogId: string;
+    dogId: number;
     race: string;
     dogName?: string;
     owner: number;
