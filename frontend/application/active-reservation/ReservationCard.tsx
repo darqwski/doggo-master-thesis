@@ -6,10 +6,12 @@ import './reservation-card.less'
 
 export interface IReservationCard {
     dogWithReservationAndOwner: IDogWithReservationAndOwner
+    edit?: boolean
 }
 
 const ReservationCard: React.FC<IReservationCard> = ({
     dogWithReservationAndOwner,
+    edit,
 }) => {
     const { creationDate, race, birth, profileImage, reservationId } =
         dogWithReservationAndOwner
@@ -31,7 +33,12 @@ const ReservationCard: React.FC<IReservationCard> = ({
                 <div className="reservation-card__short-desc">{shortDesc}</div>
             </div>
             <div className="reservation-card__footer">
-                <a href={`/active-reservation/${reservationId}`}>
+                {edit && (
+                    <a href={`/reservation/edit/${reservationId}`}>
+                        Edytuj ofertę
+                    </a>
+                )}
+                <a href={`/reservation/${reservationId}`}>
                     Zobacz pełną ofertę
                 </a>
             </div>

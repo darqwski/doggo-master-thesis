@@ -45,7 +45,8 @@ const feedList: IFeedEvent[] = [
 		type: 'dog-registered',
 		owner: { firstName: 'Typowy własciciel' },
 		dog: {
-			name: 'Soju',
+			dogName: 'Soju',
+			// @ts-ignore
 			img: '',
 		},
 	},

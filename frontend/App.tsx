@@ -11,6 +11,9 @@ import RegisterPage from "./application/register-page/RegisterPage";
 import DashboardPage from "./application/dashboard-page/DashboardPage";
 import CreateOfferPage from "./application/create-offer/CreateOfferPage";
 import ActiveReservationsPage from "./application/active-reservation/ActiveReservationsPage";
+import MyOffersPage from "./application/my-offers/MyOffersPage";
+import ReservationPage from "./application/reservation-page/ReservationPage";
+import EditReservationPage from "./application/edit-reservation-page/EditReservationPage";
 
 const routing = [
     { path: '/', component: LandingPage },
@@ -19,6 +22,9 @@ const routing = [
     { path: '/dashboard', component: DashboardPage },
     { path: '/dogs/create-offer', component: CreateOfferPage },
     { path: '/dogs/for-sale', component: ActiveReservationsPage },
+    { path: '/my-offers', component: MyOffersPage },
+    { path: '/reservation/:reservationId', component: ReservationPage },
+    { path: '/reservation/edit/:reservationId', component: EditReservationPage },
 ]
 
 const App = () => {

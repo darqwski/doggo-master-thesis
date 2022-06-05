@@ -1,0 +1,34 @@
+.reservation {
+  &__section {
+
+    &-title {
+        font-size: 2rem;
+    }
+    &-content {
+
+    }
+    &-description-container {
+      display: flex;
+      align-items: center;
+    }
+    &-description-image {
+      height: 10rem;
+      min-width: 10rem;
+    }
+    &-description-text {
+      padding-left: 1rem;
+    }
+
+    &-price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    &-buttons {
+      display: flex;
+      flex-direction: row-reverse;
+      & > * {
+        margin-right: 2rem;
+      }
+    }
+  }
+}

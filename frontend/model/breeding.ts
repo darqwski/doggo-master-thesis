@@ -1,4 +1,4 @@
 export interface IBreeding {
-    place: string
+    address: string
     name: string
 }
