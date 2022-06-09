@@ -14,6 +14,7 @@ import ActiveReservationsPage from "./application/active-reservation/ActiveReser
 import MyOffersPage from "./application/my-offers/MyOffersPage";
 import ReservationPage from "./application/reservation-page/ReservationPage";
 import EditReservationPage from "./application/edit-reservation-page/EditReservationPage";
+import MyDogsPage from "./application/my-dogs-page/MyDogsPage";
 
 const routing = [
     { path: '/', component: LandingPage },
@@ -25,6 +26,7 @@ const routing = [
     { path: '/my-offers', component: MyOffersPage },
     { path: '/reservation/:reservationId', component: ReservationPage },
     { path: '/reservation/edit/:reservationId', component: EditReservationPage },
+    { path: '/my-dogs', component: MyDogsPage },
 ]
 
 const App = () => {

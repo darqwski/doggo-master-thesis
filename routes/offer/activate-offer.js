@@ -1,4 +1,5 @@
 const express = require('express')
+const {executeQuery} = require("../../utils/database-utils");
 const router = express.Router()
 
 router.put('/API/activate-offer', async (req, res, next) => {

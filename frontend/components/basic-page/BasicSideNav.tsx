@@ -29,7 +29,7 @@ const BasicSideNav: React.FC = () => {
 					<h5 className="basic-page-side-nav__link-title">Psy</h5>
 					{isBreeder && <a className="basic-page-side-nav__link-item" href="/dogs/create-offer"> Wystaw </a>}
 					{isBreeder && <a className="basic-page-side-nav__link-item" href="/my-offers"> Moje oferty </a>}
-					{isClient && <a className="basic-page-side-nav__link-item" href="/dogs/my-dogs"> Moje psy </a>}
+					<a className="basic-page-side-nav__link-item" href="/my-dogs"> Moje psy </a>
 					<a className="basic-page-side-nav__link-item" href="/dogs/for-sale"> Psy na sprzedaż </a>
 
 				</div>
