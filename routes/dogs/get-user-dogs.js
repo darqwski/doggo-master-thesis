@@ -7,10 +7,10 @@ router.get('/API/get-user-dogs', authorizeUser,  async (req, res, next) => {
     const { userId } = req.signedCookies
 
     const dogs = await executeQuery(`
-    SELECT dogs.*, breeding.*, reservations.reservationDate, reservations.creationDate, reservations.status , reservations.reservationId 
+    SELECT dogs.*, breeding.*, offers.buyDate, offers.creationDate, offers.status , offers.offerId 
     FROM dogs 
     LEFT JOIN breeding ON breeding.breedingId = dogs.breeding
-    LEFT JOIN reservations ON reservations.dogId = dogs.dogId WHERE owner = ?
+    LEFT JOIN offers ON offers.dogId = dogs.dogId WHERE owner = ?
     `, [userId])
 
     res.send(dogs)

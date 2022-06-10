@@ -10,7 +10,7 @@ router.get('/my-offers', (req, res, next) => {
 router.get('/API/my-offers', async  (req, res, next) => {
     const { userId } = req.signedCookies
 
-    const offers = await  executeQuery('SELECT reservations.*, dogs.* FROM `reservations` INNER JOIN dogs ON dogs.dogId = reservations.dogId WHERE ownerId = ?',[userId])
+    const offers = await  executeQuery('SELECT offers.*, dogs.* FROM `offers` INNER JOIN dogs ON dogs.dogId = offers.dogId WHERE ownerId = ?',[userId])
 
     res.send(offers)
 })

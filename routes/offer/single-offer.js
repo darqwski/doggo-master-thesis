@@ -3,31 +3,31 @@ const { executeQuery } = require('../../utils/database-utils')
 const { provideFrontendData } = require('../../utils/provide-frontend-data')
 const router = express.Router()
 
-router.get('/reservation/edit/:reservationId', (req, res, next) => {
+router.get('/offer/edit/:offerId', (req, res, next) => {
     res.render(
         'index',
-        provideFrontendData(req, { reservationId: req.params.reservationId })
+        provideFrontendData(req, { offerId: req.params.offerId })
     )
 })
 
-router.get('/reservation/:reservationId', (req, res, next) => {
+router.get('/offer/:offerId', (req, res, next) => {
     res.render(
         'index',
-        provideFrontendData(req, { reservationId: req.params.reservationId })
+        provideFrontendData(req, { offerId: req.params.offerId })
     )
 })
 
-router.get('/API/reservation/:reservationId', async (req, res, next) => {
-    const { reservationId } = req.params
+router.get('/API/offer/:offerId', async (req, res, next) => {
+    const { offerId } = req.params
 
     const result = await executeQuery(
         `
     SELECT 
-       reservations.creationDate as reservationCreationDate, 
-       reservations.status as reservationStatus, 
-       reservations.description as reservationDescription, 
-       reservations.shortDescription as reservationShortDescription, 
-       reservations.price as reservationPrice,
+       offers.creationDate as offerCreationDate, 
+       offers.status as offerStatus, 
+       offers.description as offerDescription, 
+       offers.shortDescription as offerShortDescription, 
+       offers.price as offerPrice,
 
        dogs.birth as dogBirth,
        dogs.dogName as dogName,
@@ -38,26 +38,26 @@ router.get('/API/reservation/:reservationId', async (req, res, next) => {
 
        breeding.name as breedingName,
        breeding.address as breedingAddress
-    FROM reservations 
-    INNER JOIN dogs on reservations.dogId = dogs.dogId 
+    FROM offers 
+    INNER JOIN dogs on offers.dogId = dogs.dogId 
     INNER JOIN breeding on breeding.breedingId = dogs.breeding 
-    INNER JOIN users owners ON reservations.ownerId = owners.userId 
-    WHERE reservationId = ?`,
-        [reservationId]
+    INNER JOIN users owners ON offers.ownerId = owners.userId 
+    WHERE offerId = ?`,
+        [offerId]
     )
 
     if (result.length !== 1) {
-        res.status(500).send('No reservation')
+        res.status(500).send('No offer')
     }
 
-    const [reservation] = result
+    const [offer] = result
 
     const {
-        reservationCreationDate,
-        reservationStatus,
-        reservationPrice,
-        reservationShortDescription,
-        reservationDescription,
+        offerCreationDate,
+        offerStatus,
+        offerPrice,
+        offerShortDescription,
+        offerDescription,
         dogBirth,
         dogName,
         dogRace,
@@ -65,15 +65,15 @@ router.get('/API/reservation/:reservationId', async (req, res, next) => {
         ownerLogin,
         breedingName,
         breedingAddress,
-    } = reservation
+    } = offer
 
     res.send({
-        reservation: {
-            price: reservationPrice,
-            status: reservationStatus,
-            description: reservationDescription,
-            shortDescription: reservationShortDescription,
-            creationDate: reservationCreationDate,
+        offer: {
+            price: offerPrice,
+            status: offerStatus,
+            description: offerDescription,
+            shortDescription: offerShortDescription,
+            creationDate: offerCreationDate,
         },
         dog: {
             dogName,
@@ -91,14 +91,14 @@ router.get('/API/reservation/:reservationId', async (req, res, next) => {
     })
 })
 
-router.put('/API/reservation/:reservationId', async (req, res, next) => {
+router.put('/API/offer/:offerId', async (req, res, next) => {
     const { shortDescription, description, price } = req.body
-    const { reservationId } = req.params
+    const { offerId } = req.params
 
     try {
         await executeQuery(
-            'UPDATE `reservations` SET `shortDescription` = ?, `description` = ?, `price` = ? WHERE `reservations`.`reservationId` = ?;',
-            [shortDescription, description, price, reservationId]
+            'UPDATE `offers` SET `shortDescription` = ?, `description` = ?, `price` = ? WHERE `offers`.`offerId` = ?;',
+            [shortDescription, description, price, offerId]
         )
     } catch (e) {
         res.status(500).send({ message: 'something goes wrong' })

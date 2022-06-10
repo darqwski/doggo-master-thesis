@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { IDogWithReservation } from '../../model/dog'
+import { IDogWithOffer } from '../../model/dog'
 import {Button, Card} from 'react-materialize'
 
 export interface IAddDescriptionTab {
-    selectedDog: IDogWithReservation | undefined
+    selectedDog: IDogWithOffer | undefined
     selectedDogId: string | undefined
     addDescription: (
         description: string,

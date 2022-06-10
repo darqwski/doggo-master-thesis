@@ -17,7 +17,7 @@ const feedList: IFeedEvent[] = [
 
 	},
     {
-        type: 'dog-reserved',
+        type: 'dog-bought',
         dog: {
             race: 'Pomeranian',
             img: '',
@@ -27,7 +27,7 @@ const feedList: IFeedEvent[] = [
 		breeding: {name: 'Hodowla pomeranianów', place: 'Kraków' },
 	},
 	{
-		type: 'new-reservation',
+		type: 'new-offer',
 		breeder: { firstName: 'Podejrzany hodowca' },
 		breeding: {name: 'Hodowla pomeranianów', place: 'Kraków' },
 		dog: {

@@ -1,5 +1,5 @@
-import {IReservation} from "./reservation";
 import {IBreeding} from "./breeding";
+import {IOffer} from "./offer";
 
 export interface IDog {
     dogId: number;
@@ -10,10 +10,10 @@ export interface IDog {
     profileImage: string
 }
 
-export interface IDogWithReservation extends IDog, IReservation {
+export interface IDogWithOffer extends IDog, IOffer {
 }
-export interface IDogWithBreedingAndReservation extends IDogWithReservation, IBreeding {
+export interface IDogWithBreedingAndOffer extends IDogWithOffer, IBreeding {
 }
-export interface IDogWithReservationAndOwner extends IDog, IReservation {
+export interface IDogWithOfferAndOwner extends IDog, IOffer {
     ownerLogin: string
 }

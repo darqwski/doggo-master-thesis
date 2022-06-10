@@ -11,7 +11,7 @@ export interface IFeedItem {
 const FeedItem: React.FC<IFeedItem> = ({ event }) => {
     const { type, dog, breeder, breeding, owner, vet, img } = event
     const getText = () => {
-        if (type === 'new-reservation') {
+        if (type === 'new-offer') {
             return (
                 <div style={{ display: 'flex' }}>
                     <img
@@ -22,14 +22,14 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
                         <p>
                             Hodowca <strong>{breeder?.firstName}</strong>{' '}
                             wystawia psa rasy {dog?.race} w hodowli{' '}
-                            {breeding?.name} w {breeding?.place}.
+                            {breeding?.name} w {breeding?.address}.
                         </p>
                         <p>Pies ma {calculateAge(dog?.birth)}</p>
                     </div>
                 </div>
             )
         }
-        if (type === 'dog-reserved') {
+        if (type === 'dog-bought') {
             return (
                 <div style={{ display: 'flex' }}>
                     <img
@@ -39,9 +39,9 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
                     <div style={{ padding: '1rem' }}>
                         <p>
                             Pies rasy <strong>{dog?.race}</strong> został
-                            zarezerwowany w hodowoli{' '}
+                            kupiony w hodowoli
                             <strong>{breeding?.name}</strong> w{' '}
-                            <strong>{breeding?.place}</strong>.
+                            <strong>{breeding?.address}</strong>.
                         </p>
                     </div>
                 </div>
@@ -72,9 +72,9 @@ const FeedItem: React.FC<IFeedItem> = ({ event }) => {
                     />
                     <div style={{ padding: '1rem' }}>
                         <p>
-                            Hodowca <strong>{breeder?.firstName}</strong>{' '}
-                            rejestruje nowego psa rasy {dog?.race} w hodowli{' '}
-                            {breeding?.name} w {breeding?.place}.
+                            Hodowca <strong>{breeder?.firstName}</strong>
+                            rejestruje nowego psa rasy {dog?.race} w hodowli
+                            {breeding?.name} w {breeding?.address}.
                         </p>
                     </div>
                 </div>

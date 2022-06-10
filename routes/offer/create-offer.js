@@ -21,7 +21,7 @@ router.post('/API/create-offer', async (req, res, next) => {
 
     try {
         insertResult = await executeQuery(
-            "INSERT INTO `reservations` (`reservationId`, `creationDate`, `reservationDate`, `ownerId`, `reservingId`, `dogId`, `status`, `isActive`) VALUES (NULL, NOW(), NULL, ?, NULL, ?, 'created', 0);",
+            "INSERT INTO `offers` (`offerId`, `creationDate`, `buyDate`, `ownerId`, `reservingId`, `dogId`, `status`, `isActive`) VALUES (NULL, NOW(), NULL, ?, NULL, ?, 'created', 0);",
             [userId, dogId]
         )
     } catch (e) {
@@ -32,21 +32,21 @@ router.post('/API/create-offer', async (req, res, next) => {
     const { insertId } = insertResult
 
     await recordEvent({
-        eventType: 'new-reservation',
+        eventType: 'new-offer',
         dogId,
         breederId: userId,
     })
 
-    res.send({ reservationId: insertId })
+    res.send({ offerId: insertId })
 })
 
 router.put('/API/update-offer-description', async (req, res, next) => {
-    const { shortDescription, description, reservationId } = req.body
+    const { shortDescription, description, offerId } = req.body
     //TODO validation if user is owner of dog
     try {
         await executeQuery(
-            'UPDATE `reservations` SET `shortDescription` = ?, `description` = ? WHERE `reservations`.`reservationId` = ?;',
-            [shortDescription, description, reservationId]
+            'UPDATE `offers` SET `shortDescription` = ?, `description` = ? WHERE `offers`.`offerId` = ?;',
+            [shortDescription, description, offerId]
         )
 
         res.send({ message: 'ok' })

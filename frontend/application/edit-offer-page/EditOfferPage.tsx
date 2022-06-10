@@ -3,24 +3,24 @@ import { useParams } from 'react-router-dom'
 import BasicPage from '../../components/basic-page/BasicPage'
 import useAppRequest from '../../hooks/use-app-request'
 import { Button, Card } from 'react-materialize'
-import { IReservation } from '../../model/reservation'
-import './edit-reservation.less'
+import { IOffer } from '../../model/offer'
+import './edit-offer.less'
 import appRequest from '../../utils/app-request'
 
-export interface IEditReservationPage {}
+export interface IEditOfferPage {}
 
-const EditReservationPage: React.FC = () => {
-    const { reservationId } = useParams<{ reservationId: string }>()
+const EditOfferPage: React.FC = () => {
+    const { offerId } = useParams<{ offerId: string }>()
     const [shortDescription, setShortDescription] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
-    const { data } = useAppRequest<{ reservation: IReservation }>({
-        url: `/API/reservation/${reservationId}`,
+    const { data } = useAppRequest<{ offer: IOffer }>({
+        url: `/API/offer/${offerId}`,
     })
 
-    const updateReservation = async () => {
+    const updateOffer = async () => {
         await appRequest({
-            url: '/API/reservation/' + reservationId,
+            url: '/API/offer/' + offerId,
             method: 'PUT',
             data: { shortDescription, description, price}
         })
@@ -31,9 +31,9 @@ const EditReservationPage: React.FC = () => {
             return
         }
 
-        setShortDescription(data.reservation.shortDescription)
-        setDescription(data.reservation.description)
-        setPrice(data.reservation.price)
+        setShortDescription(data.offer.shortDescription)
+        setDescription(data.offer.description)
+        setPrice(data.offer.price)
     }, [data])
     return (
         <BasicPage>
@@ -44,7 +44,7 @@ const EditReservationPage: React.FC = () => {
                     <textarea
                         cols={80}
                         rows={10}
-                        className="edit-reservation__textarea"
+                        className="edit-offer__textarea"
                         value={shortDescription}
                         onChange={(event) =>
                             setShortDescription(event.target.value)
@@ -56,7 +56,7 @@ const EditReservationPage: React.FC = () => {
                     <textarea
                         cols={80}
                         rows={10}
-                        className="edit-reservation__textarea"
+                        className="edit-offer__textarea"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
                     />
@@ -70,7 +70,7 @@ const EditReservationPage: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <Button onClick={updateReservation}>Zapisz zmiany</Button>
+                    <Button onClick={updateOffer}>Zapisz zmiany</Button>
                     <Button flat><a href="/my-offers">Anuluj</a></Button>
                 </div>
             </Card>
@@ -78,4 +78,4 @@ const EditReservationPage: React.FC = () => {
     )
 }
 
-export default EditReservationPage
+export default EditOfferPage

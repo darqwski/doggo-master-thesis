@@ -3,13 +3,13 @@ const {executeQuery} = require("../../utils/database-utils");
 const router = express.Router()
 
 router.put('/API/activate-offer', async (req, res, next) => {
-    const { reservationId } = req.body
+    const { offerId } = req.body
 
     //TODO validation if user is owner of dog
     try {
         await executeQuery(
-            'UPDATE `reservations` SET `isActive` = 1 WHERE `reservations`.`reservationId` = ?;',
-            [reservationId]
+            'UPDATE `offers` SET `isActive` = 1 WHERE `offers`.`offerId` = ?;',
+            [offerId]
         )
 
         res.send({ message: 'ok' })
@@ -19,13 +19,13 @@ router.put('/API/activate-offer', async (req, res, next) => {
 })
 
 router.put('/API/deactivate-offer', async (req, res, next) => {
-    const { reservationId } = req.body
+    const { offerId } = req.body
 
     //TODO validation if user is owner of dog
     try {
         await executeQuery(
-            'UPDATE `reservations` SET `isActive` = 1 WHERE `reservations`.`reservationId` = ?;',
-            [reservationId]
+            'UPDATE `offers` SET `isActive` = 1 WHERE `offers`.`offerId` = ?;',
+            [offerId]
         )
 
         res.send({ message: 'ok' })

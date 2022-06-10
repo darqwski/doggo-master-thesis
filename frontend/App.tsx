@@ -10,10 +10,10 @@ import SnackbarManager from './components/snackbar/SnackbarContextManager'
 import RegisterPage from "./application/register-page/RegisterPage";
 import DashboardPage from "./application/dashboard-page/DashboardPage";
 import CreateOfferPage from "./application/create-offer/CreateOfferPage";
-import ActiveReservationsPage from "./application/active-reservation/ActiveReservationsPage";
+import ActiveOffers from "./application/active-offers/ActiveOffers";
 import MyOffersPage from "./application/my-offers/MyOffersPage";
-import ReservationPage from "./application/reservation-page/ReservationPage";
-import EditReservationPage from "./application/edit-reservation-page/EditReservationPage";
+import OfferPage from "./application/offer-page/OfferPage";
+import EditOfferPage from "./application/edit-offer-page/EditOfferPage";
 import MyDogsPage from "./application/my-dogs-page/MyDogsPage";
 
 const routing = [
@@ -22,10 +22,10 @@ const routing = [
     { path: '/register', component: RegisterPage },
     { path: '/dashboard', component: DashboardPage },
     { path: '/dogs/create-offer', component: CreateOfferPage },
-    { path: '/dogs/for-sale', component: ActiveReservationsPage },
+    { path: '/dogs/for-sale', component: ActiveOffers },
     { path: '/my-offers', component: MyOffersPage },
-    { path: '/reservation/:reservationId', component: ReservationPage },
-    { path: '/reservation/edit/:reservationId', component: EditReservationPage },
+    { path: '/offer/:offerId', component: OfferPage },
+    { path: '/offer/edit/:offerId', component: EditOfferPage },
     { path: '/my-dogs', component: MyDogsPage },
 ]
 

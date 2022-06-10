@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BasicPage from '../../components/basic-page/BasicPage'
 import { Button, Card, Select } from 'react-materialize'
 import useAppRequest from '../../hooks/use-app-request'
-import { IDog, IDogWithReservation } from '../../model/dog'
+import { IDog, IDogWithOffer } from '../../model/dog'
 import appRequest from '../../utils/app-request'
 import SelectDogTab from './SelectDogTab'
 import AddDescriptionTab from './AddDescriptionTab'
@@ -17,11 +17,11 @@ const CONFIRM_TAB = 3
 const FINAL_TAB = 10
 
 const CreateOfferPage: React.FC = () => {
-    const [reservationId, setReservationId] = useState<number>()
+    const [offerId, setOfferId] = useState<number>()
     const [selectedDogId, setSelectedDogId] = useState<string | undefined>('123')
     const [tab, setTab] = useState(FINAL_TAB)
 
-    const { data: dogs = [] } = useAppRequest<IDogWithReservation[]>({
+    const { data: dogs = [] } = useAppRequest<IDogWithOffer[]>({
         name: 'dogs',
         url: '/API/get-user-dogs',
     })
@@ -37,7 +37,7 @@ const CreateOfferPage: React.FC = () => {
         await appRequest({
             url: '/API/update-offer-description',
             method: 'PUT',
-            data: { reservationId, shortDescription, description },
+            data: { offerId, shortDescription, description },
         })
 
         setTab(CONFIRM_TAB)
@@ -46,20 +46,20 @@ const CreateOfferPage: React.FC = () => {
         await appRequest({
             url: '/API/activate-offer',
             method: 'PUT',
-            data: { reservationId },
+            data: { offerId },
         })
 
         setTab(FINAL_TAB)
     }
 
     const createOffer = async () => {
-        const { data } = await appRequest<{ reservationId: number }>({
+        const { data } = await appRequest<{ offerId: number }>({
             url: '/API/create-offer',
             method: 'POST',
             data: { dogId: selectedDogId },
         })
 
-        setReservationId(data.reservationId)
+        setOfferId(data.offerId)
         setTab(ADD_DESCRIPTION_TAB)
     }
 
@@ -84,10 +84,10 @@ const CreateOfferPage: React.FC = () => {
                 {tab === CONFIRM_TAB && (
                     <ConfirmTab
                         confirmOffer={confirmOffer}
-                        dogWithReservation={selectedDog}
+                        dogWithOffer={selectedDog}
                     />
                 )}
-                {tab === FINAL_TAB && <FinalTab reservationId={reservationId} />}
+                {tab === FINAL_TAB && <FinalTab offerId={offerId} />}
             </>
         </BasicPage>
     )

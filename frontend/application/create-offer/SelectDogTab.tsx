@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { Button, Card, Select } from 'react-materialize'
 import useAppRequest from '../../hooks/use-app-request'
-import { IDogWithReservation } from '../../model/dog'
+import { IDogWithOffer } from '../../model/dog'
 
 export interface ISelectDogTab {
     setSelectedDogId: Dispatch<SetStateAction<string | undefined>>
     selectedDogId: string | undefined
-    dogs: IDogWithReservation[]
+    dogs: IDogWithOffer[]
     createOffer: () => Promise<void>
 }
 
@@ -16,7 +16,7 @@ const SelectDogTab: React.FC<ISelectDogTab> = ({
     createOffer,
     dogs,
 }) => {
-    const filteredDogs = dogs.filter((dog) => !dog.reservationId)
+    const filteredDogs = dogs.filter((dog) => !dog.offerId)
 
     return (
         <Card>

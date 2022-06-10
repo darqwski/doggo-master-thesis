@@ -1,5 +1,5 @@
-export interface IReservation {
-    reservationId: number;
+export interface IOffer {
+    offerId: number;
     creationDate: string;
     shortDescription: string;
     description: string;

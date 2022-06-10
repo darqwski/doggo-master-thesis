@@ -2,14 +2,14 @@ import React from 'react'
 import BasicPage from '../../components/basic-page/BasicPage'
 import useAppRequest from "../../hooks/use-app-request";
 import {Preloader} from "react-materialize";
-import { IDogWithBreedingAndReservation } from "../../model/dog";
+import { IDogWithBreedingAndOffer } from "../../model/dog";
 import MyDogTile from "./components/MyDogTile";
 
 export interface IMyDogsPage {}
 
 const MyDogsPage: React.FC = () => {
 
-	const { data: myDogs } = useAppRequest<IDogWithBreedingAndReservation[]>({ url: '/API/get-user-dogs' })
+	const { data: myDogs } = useAppRequest<IDogWithBreedingAndOffer[]>({ url: '/API/get-user-dogs' })
 
     return <BasicPage>
 			{myDogs ?  (
