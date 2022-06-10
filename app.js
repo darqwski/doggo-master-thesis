@@ -16,6 +16,9 @@ const myOffers = require('./routes/offer/my-offers');
 const activateOffer = require('./routes/offer/activate-offer');
 const singleOffer = require('./routes/offer/single-offer');
 const myDogs = require('./routes/dogs/my-dogs');
+const paymentPage = require('./routes/payment/payment-page');
+const getUserInfo = require('./routes/user/get-user-info');
+const performPaymentProcess = require('./routes/payment/perform-payment-process');
 
 const app = express();
 
@@ -43,6 +46,9 @@ app.use('/', myOffers);
 app.use('/', activateOffer);
 app.use('/', singleOffer);
 app.use('/', myDogs);
+app.use('/', paymentPage);
+app.use('/', getUserInfo);
+app.use('/', performPaymentProcess);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

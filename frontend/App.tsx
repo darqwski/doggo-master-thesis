@@ -15,6 +15,7 @@ import MyOffersPage from "./application/my-offers/MyOffersPage";
 import OfferPage from "./application/offer-page/OfferPage";
 import EditOfferPage from "./application/edit-offer-page/EditOfferPage";
 import MyDogsPage from "./application/my-dogs-page/MyDogsPage";
+import PaymentPage from "./application/payment-page/PaymentPage";
 
 const routing = [
     { path: '/', component: LandingPage },
@@ -27,6 +28,7 @@ const routing = [
     { path: '/offer/:offerId', component: OfferPage },
     { path: '/offer/edit/:offerId', component: EditOfferPage },
     { path: '/my-dogs', component: MyDogsPage },
+    { path: '/offer/:offerId/payment', component: PaymentPage },
 ]
 
 const App = () => {

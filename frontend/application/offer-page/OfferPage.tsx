@@ -9,8 +9,6 @@ import {IBreeding} from "../../model/breeding";
 import {IUser} from "../../model/user";
 import './offer-page.less';
 
-export interface IOfferPage {}
-
 const OfferPage: React.FC = () => {
     const { offerId } = useParams<{ offerId: string }>()
     const { data } = useAppRequest<{
@@ -77,7 +75,7 @@ const OfferPage: React.FC = () => {
 						<span className="offer__section-price">{offer?.price} zł</span>
 					</div>
 					<div className="offer__section-buttons">
-						<Button>Biere</Button>
+						<Button node="a" href={`/offer/${offerId}/payment`}>Biere</Button>
 						<a href="/dogs/for-sale">Nie tego szukam</a>
 
 					</div>

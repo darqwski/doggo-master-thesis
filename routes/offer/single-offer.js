@@ -35,6 +35,8 @@ router.get('/API/offer/:offerId', async (req, res, next) => {
        dogs.profileImage as dogProfileImage,
 
        owners.login as ownerLogin,
+       owners.firstName as ownerFirstName,
+       owners.lastName as ownerLastName,
 
        breeding.name as breedingName,
        breeding.address as breedingAddress
@@ -63,6 +65,8 @@ router.get('/API/offer/:offerId', async (req, res, next) => {
         dogRace,
         dogProfileImage,
         ownerLogin,
+        ownerFirstName,
+        ownerLastName,
         breedingName,
         breedingAddress,
     } = offer
