@@ -19,6 +19,7 @@ const myDogs = require('./routes/dogs/my-dogs');
 const paymentPage = require('./routes/payment/payment-page');
 const getUserInfo = require('./routes/user/get-user-info');
 const performPaymentProcess = require('./routes/payment/perform-payment-process');
+const dogGallery = require('./routes/dogs/dog-gallery');
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use('/', myDogs);
 app.use('/', paymentPage);
 app.use('/', getUserInfo);
 app.use('/', performPaymentProcess);
+app.use('/', dogGallery);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

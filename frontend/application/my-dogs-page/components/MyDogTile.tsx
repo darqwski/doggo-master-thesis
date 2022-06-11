@@ -45,7 +45,7 @@ const MyDogTile: React.FC<IMyDogTile> = ({ dog, isOwner }) => {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     {isOwner && (
-                        <a style={{ marginRight: '1rem' }}>
+                        <a href={`/dog/${dog.dogId}/edit`} style={{ marginRight: '1rem' }}>
                             Edytuj galerię zdjęć
                         </a>
                     )}
