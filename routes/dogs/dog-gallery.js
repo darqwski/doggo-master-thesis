@@ -58,10 +58,16 @@ router.post('/API/dog/:dogId/add-photo', (req, res, next) => {
             res.send(err)
         } else {
             const { destination, filename, size, path } =req.file
-            await executeQuery(`
-INSERT INTO uploaded_files (fileId, fileUrl, fileDir, fileName, ownerId, size) 
-VALUES ( NULL, ?, ? ,? , ? , ? )
-`, [path, destination, filename, userId, size ])
+            const { insertId } = await executeQuery(
+                `INSERT INTO uploaded_files (fileId, fileUrl, fileDir, fileName, ownerId, size) VALUES ( NULL, ?, ? ,? , ? , ? )`,
+                [path, destination, filename, userId, size ]
+            )
+
+            await executeQuery(
+                `INSERT INTO dog_images (dogImageId, dogId, imageId) VALUES ( NULL, ?, ?)`,
+                [dogId, insertId ]
+            )
+
             res.send({message: 'Success, Image uploaded!'})
         }
     })
