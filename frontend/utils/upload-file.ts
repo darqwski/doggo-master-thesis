@@ -1,5 +1,16 @@
-export const uploadFile = async (endpoint: string, file: File, method = 'POST', options = {}) => {
-    const formData = new FormData();
+export const uploadFile = async (
+    endpoint: string,
+    file: File,
+    data?: Record<string, string>,
+    options = {}
+) => {
+    const formData = new FormData()
     formData.append('image', file)
-    return fetch(endpoint, { ...options, method, body: formData})
+
+    if (data) {
+        Object.entries(data).forEach(([key, value]) => {
+            formData.append(key, value)
+        })
+    }
+    return fetch(endpoint, { method: 'POST', body: formData, ...options })
 }

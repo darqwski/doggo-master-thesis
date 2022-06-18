@@ -12,6 +12,8 @@ export interface IDog {
 
 export interface IDogWithOffer extends IDog, IOffer {
 }
+export interface IDogWithBreeding extends IDog, IBreeding {
+}
 export interface IDogWithBreedingAndOffer extends IDogWithOffer, IBreeding {
 }
 export interface IDogWithOfferAndOwner extends IDog, IOffer {

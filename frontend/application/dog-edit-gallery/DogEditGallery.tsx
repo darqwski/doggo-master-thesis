@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import BasicPage from '../../components/basic-page/BasicPage'
 import { Button, Card } from 'react-materialize'
 import appRequest from '../../utils/app-request'
@@ -10,12 +10,14 @@ import { SnackbarContext } from '../../components/snackbar/snackbar-context'
 
 const DogEditGallery: React.FC = () => {
     const { dogId } = useParams<{ dogId: string }>()
+    const [description, setDescription] = useState('')
+    const [fileToUpload, setFileToUpload] = useState<undefined | File>()
     const { addSnackBar } = useContext(SnackbarContext)
     const { data: dogImages, refresh } = useAppRequest<
         { fileUrl: string; fileId: number }[]
     >({ url: ` /API/dog/${dogId}/images` })
 
-    const uploadImage: React.ChangeEventHandler<HTMLInputElement> = async (
+    const changeImage: React.ChangeEventHandler<HTMLInputElement> = async (
         event
     ) => {
         const { files } = event.target
@@ -24,13 +26,25 @@ const DogEditGallery: React.FC = () => {
             return
         }
 
-        await uploadFile('/API/dog/' + dogId + '/add-photo', files?.[0])
+        setFileToUpload(files?.[0])
     }
 
     const removeFile = async (fileId: number) => {
-        await appRequest({ method: 'DELETE', url: '/API/dog/remove-image/' + fileId })
+        await appRequest({
+            method: 'DELETE',
+            url: '/API/dog/remove-image/' + fileId,
+        })
         addSnackBar({ text: 'Usunięto obrazek' })
         refresh()
+    }
+
+    const uploadImage = async () => {
+        if (!fileToUpload) {
+            return
+        }
+        await uploadFile('/API/dog/' + dogId + '/add-photo', fileToUpload, {
+            description,
+        })
     }
 
     return (
@@ -40,7 +54,21 @@ const DogEditGallery: React.FC = () => {
                     <h3>Dodaj zdjęcie</h3>
                     <div>
                         <label htmlFor="file">Wybierz plik</label>
-                        <input type="file" id="file" onChange={uploadImage} />
+                        <input type="file" id="file" onChange={changeImage} />
+                    </div>
+                    <div>
+                        <label htmlFor="imageDescription">
+                            Wpisz zdjęcia
+                            <textarea
+                                id="imageDescription"
+                                onChange={(event) =>
+                                    setDescription(event.target.value)
+                                }
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <Button onClick={uploadImage}>Wgraj zdjęcie</Button>
                     </div>
                 </Card>
 
@@ -56,7 +84,13 @@ const DogEditGallery: React.FC = () => {
                                         alt=""
                                     />
                                     <div>
-                                        <Button onClick={()=>removeFile(dogImage.fileId)}>Usuń zdjęcie</Button>
+                                        <Button
+                                            onClick={() =>
+                                                removeFile(dogImage.fileId)
+                                            }
+                                        >
+                                            Usuń zdjęcie
+                                        </Button>
                                     </div>
                                 </div>
                             ))}

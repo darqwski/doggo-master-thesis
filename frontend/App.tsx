@@ -17,6 +17,7 @@ import EditOfferPage from "./application/edit-offer-page/EditOfferPage";
 import MyDogsPage from "./application/my-dogs-page/MyDogsPage";
 import PaymentPage from "./application/payment-page/PaymentPage";
 import DogEditGallery from "./application/dog-edit-gallery/DogEditGallery";
+import DogGalleryPage from "./application/dog-gallery/DogGalleryPage";
 
 const routing = [
     { path: '/', component: LandingPage },
@@ -31,6 +32,7 @@ const routing = [
     { path: '/my-dogs', component: MyDogsPage },
     { path: '/offer/:offerId/payment', component: PaymentPage },
     { path: '/dog/:dogId/edit', component: DogEditGallery },
+    { path: '/dog/:dogId', component: DogGalleryPage },
 ]
 
 const App = () => {

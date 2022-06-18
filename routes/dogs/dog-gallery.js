@@ -11,6 +11,19 @@ router.get('/dog-images/:dogId/:fileName', (req, res, next) => {
     const { dogId, fileName } = req.params
 
     res.sendFile(process.cwd() + '/userdata/dogs/' + dogId + '/' + fileName)
+});
+
+router.get('/API/dog-info/:dogId/', async (req, res, next) => {
+    const { dogId } = req.params
+
+    const [dogInfo] = await executeQuery(`
+SELECT breeding.*, users.login, dogs.*
+FROM dogs
+INNER JOIN breeding ON breeding.breedingId = dogs.breeding
+INNER JOIN users ON users.userId = dogs.owner
+WHERE dogs.dogId = ?`, [dogId]);
+
+    res.send(dogInfo)
 })
 
 router.delete('/API/dog/remove-image/:fileId', async (req, res, next) => {
@@ -102,14 +115,15 @@ router.post('/API/dog/:dogId/add-photo', (req, res, next) => {
             res.send(err)
         } else {
             const { destination, filename, size, path } = req.file
+            const { description } = req.body
             const { insertId } = await executeQuery(
                 `INSERT INTO uploaded_files (fileId, fileUrl, fileDir, fileName, ownerId, size, uploadDatetime) VALUES ( NULL, ?, ? ,? , ? , ?, NOW())`,
                 [path, destination, filename, userId, size]
             )
 
             await executeQuery(
-                `INSERT INTO dog_images (dogImageId, dogId, imageId) VALUES ( NULL, ?, ?)`,
-                [dogId, insertId]
+                `INSERT INTO dog_images (dogImageId, dogId, imageId, description, creationDate) VALUES ( NULL, ?, ?, ?, NOW())`,
+                [dogId, insertId, description]
             )
 
             res.send({ message: 'Success, Image uploaded!' })
@@ -118,6 +132,10 @@ router.post('/API/dog/:dogId/add-photo', (req, res, next) => {
 })
 
 router.get('/dog/:dogId/edit', (req, res, next) => {
+    res.render('index', provideFrontendData(req))
+})
+
+router.get('/dog/:dogId', (req, res, next) => {
     res.render('index', provideFrontendData(req))
 })
 
