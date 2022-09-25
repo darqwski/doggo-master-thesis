@@ -19,7 +19,7 @@ const FINAL_TAB = 10
 const CreateOfferPage: React.FC = () => {
     const [offerId, setOfferId] = useState<number>()
     const [selectedDogId, setSelectedDogId] = useState<string | undefined>('123')
-    const [tab, setTab] = useState(FINAL_TAB)
+    const [tab, setTab] = useState(SELECT_DOG_TAB)
 
     const { data: dogs = [] } = useAppRequest<IDogWithOffer[]>({
         name: 'dogs',
