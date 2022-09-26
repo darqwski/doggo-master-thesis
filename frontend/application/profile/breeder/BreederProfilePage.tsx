@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom'
 import useAppRequest from '../../../hooks/use-app-request'
 import { IBreederWithBreedingDogsAndOpinions } from '../../../model/breeder'
 import BasicUserInfo from '../common/BasicUserInfo'
-import BreedingInfo from "../common/BreedingInfo";
-import DogBasicInfo from "../common/DogBasicInfo";
-import OpinionView from "../common/OpinionView";
+import BreedingInfo from '../common/BreedingInfo'
+import DogBasicInfo from '../common/DogBasicInfo'
+import OpinionView from '../common/OpinionView'
 
 export interface IBreederProfilePage {}
 
@@ -22,18 +22,41 @@ const BreederProfilePage: React.FC = ({}) => {
             <Card>
                 {data ? (
                     <div>
-						<h2>Profil użytkownika {data.login}</h2>
-						<div className="flex">
-							<BasicUserInfo user={data} />
-							<div style={{marginLeft: '3rem'}}>
-								<h3>Hodowle ({data.breedings.length})</h3>
-								{data.breedings.map(breeding=><BreedingInfo breeding={breeding} />)}
-							</div>
-						</div>
-                        <h3>Psy w hodowli {(data.dogs.length)}</h3>
-						{data.dogs.map(dog=><DogBasicInfo dog={dog} />)}
-						<h3>Opinie o hodowli od klientów</h3>
-						{data.opinions.map(opinion=><OpinionView opinion={opinion} />)}
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <h2 style={{ display: 'block' }}>
+                                Profil użytkownika {data.login}
+                            </h2>
+                            <a
+                                style={{ display: 'block' }}
+                                className="btn"
+                                href={breederId + '/add-opinion'}
+                            >
+                                Wystaw opinię
+                            </a>
+                        </div>
+                        <div className="flex">
+                            <BasicUserInfo user={data} />
+                            <div style={{ marginLeft: '3rem' }}>
+                                <h3>Hodowle ({data.breedings.length})</h3>
+                                {data.breedings.map((breeding) => (
+                                    <BreedingInfo breeding={breeding} />
+                                ))}
+                            </div>
+                        </div>
+                        <h3>Psy w hodowli {data.dogs.length}</h3>
+                        {data.dogs.map((dog) => (
+                            <DogBasicInfo dog={dog} />
+                        ))}
+                        <h3>Opinie o hodowli od klientów</h3>
+                        {data.opinions.map((opinion) => (
+                            <OpinionView opinion={opinion} />
+                        ))}
                     </div>
                 ) : (
                     <div>Loading</div>
