@@ -1,3 +1,5 @@
+import {IOpinion} from "./opinion";
+
 export interface IUser {
     firstName?: string;
     lastName?: string;
@@ -5,4 +7,13 @@ export interface IUser {
     login: string;
     email: string;
     type: string
+}
+
+export interface IUserWithAdminData extends IUser {
+    dogsAmount: number
+    givenOpinions: number
+    login: string
+    receivedOpinions: number
+    type: string
+    userId: number
 }

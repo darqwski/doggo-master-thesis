@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import BasicPage from "../../components/basic-page/BasicPage";
 import AdminMenuView from "./AdminMenuView";
 import './admin.less'
+import AdminUsersView from "./AdminUsersView";
 
 export interface IAdministrationDashboard {
 
@@ -9,9 +10,9 @@ export interface IAdministrationDashboard {
 
 export const VIEWS = {
 	MENU: 0,
-	USERS: 0,
-	OFFERS: 0,
-	BREEDERS: 0,
+	USERS: 1,
+	OFFERS: 2,
+	BREEDERS: 3,
 }
 
 const AdministrationDashboard: React.FC = () => {
@@ -19,6 +20,7 @@ const AdministrationDashboard: React.FC = () => {
     return <BasicPage>
 		<>
 			{view === VIEWS.MENU && <AdminMenuView setView={setView}/>}
+			{view === VIEWS.USERS && <AdminUsersView />}
 		</>
 	</BasicPage>;
 };
