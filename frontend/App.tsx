@@ -20,6 +20,7 @@ import DogEditGallery from "./application/dog-edit-gallery/DogEditGallery";
 import DogGalleryPage from "./application/dog-gallery/DogGalleryPage";
 import BreederProfilePage from "./application/profile/breeder/BreederProfilePage";
 import AddOpinionPage from "./application/profile/opinion/AddOpinionPage";
+import AdministrationDashboard from "./application/administration/AdministrationDashboard";
 
 const routing = [
     { path: '/', component: LandingPage },
@@ -37,6 +38,7 @@ const routing = [
     { path: '/dog/:dogId', component: DogGalleryPage },
     { path: '/profile/breeder/:breederId', component: BreederProfilePage },
     { path: '/profile/breeder/:breederId/add-opinion', component: AddOpinionPage },
+    { path: '/admin', component: AdministrationDashboard },
 ]
 
 const App = () => {
